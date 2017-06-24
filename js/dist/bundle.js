@@ -28132,6 +28132,7 @@ var Main = function (_Component) {
 
 			var actionToDo = _actions.actions[actionName];
 			actionToDo(this.state, options).then(function (newStore) {
+				console.log('newstore is...', newStore);
 				_this2.setState(newStore);
 			});
 		}
@@ -28206,18 +28207,12 @@ var App = function (_Component) {
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            console.log('APP PROPS', this.props);
             var currentRoute = this.props.currentRoute;
             // console.log(currentRoute)
 
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
-                    _Router.Link,
-                    _extends({ route: '/create' }, this.props),
-                    'New Alarm'
-                ),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
@@ -28231,6 +28226,7 @@ var App = function (_Component) {
                             { style: { display: 'flex' } },
                             _react2.default.createElement(_Gmaps2.default, _extends({ center: this.props.data.consumer.location }, this.props)),
                             _react2.default.createElement(_SideBar2.default, {
+                                dispatch: this.props.dispatch,
                                 electricians: this.props.data.serviceProviders.electricians,
                                 plumbers: this.props.data.serviceProviders.plumbers
                             })
@@ -28324,7 +28320,7 @@ exports.default = DropdownExampleSelection;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -28350,113 +28346,104 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var K_SIZE = 40;
 
 var greatPlaceStyle = {
-	// initially any map object has left top corner at lat lng coordinates
-	// it's on you to set object origin to 0,0 coordinates
-	position: 'absolute',
-	width: K_SIZE,
-	height: K_SIZE,
-	left: -K_SIZE / 2,
-	top: -K_SIZE / 2,
+  // initially any map object has left top corner at lat lng coordinates
+  // it's on you to set object origin to 0,0 coordinates
+  position: 'absolute',
+  width: K_SIZE,
+  height: K_SIZE,
+  left: -K_SIZE / 2,
+  top: -K_SIZE / 2,
 
-	border: '5px solid #f44336',
-	borderRadius: K_SIZE,
-	backgroundColor: 'white',
-	textAlign: 'center',
-	color: '#3f51b5',
-	fontSize: 16,
-	fontWeight: 'bold',
-	padding: 4,
-	cursor: 'pointer'
+  border: '5px solid #f44336',
+  borderRadius: K_SIZE,
+  backgroundColor: 'white',
+  textAlign: 'center',
+  color: '#3f51b5',
+  fontSize: 16,
+  fontWeight: 'bold',
+  padding: 4,
+  cursor: 'pointer'
 };
 
 var greatPlaceStyleHover = _extends({}, greatPlaceStyle, {
-	border: '5px solid #3f51b5',
-	color: '#f44336'
+  border: '5px solid #3f51b5',
+  color: '#f44336'
 });
 
 var styles = {
-	container: {
-		width: '70vw',
-		height: '500px'
-		// display: 'inline-block'
-	}
+  container: {
+    width: '70vw',
+    height: '500px',
+    display: 'inline-block'
+  }
 
-	// export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};
+  // export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};
 
 };var ConsumrFlag = function ConsumrFlag() {
-	return _react2.default.createElement(
-		'div',
-		{ style: greatPlaceStyle },
-		'C'
-	);
+  return _react2.default.createElement(
+    'div',
+    { style: greatPlaceStyle },
+    'C'
+  );
 };
 var ProviderFlag = function ProviderFlag(_ref) {
-	var text = _ref.text,
-	    color = _ref.color,
-	    border = _ref.border;
-	return _react2.default.createElement(
-		'div',
-		{ style: _extends({}, greatPlaceStyle, { color: color, border: border }) },
-		text
-	);
+  var text = _ref.text,
+      color = _ref.color,
+      border = _ref.border;
+  return _react2.default.createElement(
+    'div',
+    { style: _extends({}, greatPlaceStyle, { color: color, border: border }) },
+    text
+  );
 };
 
 var Gmaps = function (_Component) {
-	_inherits(Gmaps, _Component);
+  _inherits(Gmaps, _Component);
 
-	function Gmaps() {
-		_classCallCheck(this, Gmaps);
+  function Gmaps() {
+    _classCallCheck(this, Gmaps);
 
-		return _possibleConstructorReturn(this, (Gmaps.__proto__ || Object.getPrototypeOf(Gmaps)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (Gmaps.__proto__ || Object.getPrototypeOf(Gmaps)).apply(this, arguments));
+  }
 
-	_createClass(Gmaps, [{
-		key: 'render',
-		value: function render() {
-			console.log(this.props);
+  _createClass(Gmaps, [{
+    key: 'render',
+    value: function render() {
+      console.log('GMAPS', this.props.type);
+      var providers = this.props.data.serviceProviders[this.props.type] || [];
+      console.log('here');
+      return _react2.default.createElement(
+        'div',
+        { style: styles.container },
+        _react2.default.createElement(
+          _googleMapReact2.default,
+          { defaultCenter: this.props.center, defaultZoom: this.props.zoom },
+          providers.map(function (provider, index) {
+            return _react2.default.createElement(ProviderFlag, {
+              key: index,
+              lat: provider.location.lat,
+              lng: provider.location.lng,
+              text: provider.type,
+              color: "blue",
+              border: "5px solid #ccc"
+            });
+          }),
+          _react2.default.createElement(ConsumrFlag, {
+            lat: this.props.data.consumer.location.lat,
+            lng: this.props.data.consumer.location.lng,
+            text: 'C'
+          })
+        )
+      );
+    }
+  }]);
 
-			return _react2.default.createElement(
-				'div',
-				{ style: styles.container },
-				_react2.default.createElement(
-					_googleMapReact2.default,
-					{ defaultCenter: this.props.center, defaultZoom: this.props.zoom },
-					this.props.data.serviceProviders.electricians.map(function (electrician, index) {
-						return _react2.default.createElement(ProviderFlag, {
-							key: index,
-							lat: electrician.location.lat,
-							lng: electrician.location.lng,
-							text: 'E',
-							color: "blue",
-							border: "5px solid #ccc"
-						});
-					}),
-					this.props.data.serviceProviders.plumbers.map(function (plumbers, index) {
-						return _react2.default.createElement(ProviderFlag, {
-							key: index,
-							lat: plumbers.location.lat,
-							lng: plumbers.location.lng,
-							text: 'P',
-							color: "red",
-							border: "5px solid #fff"
-						});
-					}),
-					_react2.default.createElement(ConsumrFlag, {
-						lat: this.props.data.consumer.location.lat,
-						lng: this.props.data.consumer.location.lng,
-						text: 'C'
-					})
-				)
-			);
-		}
-	}]);
-
-	return Gmaps;
+  return Gmaps;
 }(_react.Component);
 
 Gmaps.defaultProps = {
-	center: { lat: 59.95, lng: 30.33 },
-	zoom: 15
+  center: { lat: 59.95, lng: 30.33 },
+  zoom: 15
 };
 exports.default = Gmaps;
 
@@ -28490,8 +28477,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var style = {
-	// display: 'inline-block',
+	padding: '50px'
+};
 
+var style2 = {
+	marginTop: '25px'
+};
+var style3 = {
+	margin: '5px'
 };
 
 var SideBar = function (_Component) {
@@ -28506,7 +28499,10 @@ var SideBar = function (_Component) {
 			_this.setState({
 				jobs: opts.value
 			});
-			console.log(_this.state.jobs);
+			console.log(_this.state.jobs, 'tes', opts.value);
+			_this.props.dispatch('PROVIDER_TYPE', {
+				type: opts.value
+			});
 		};
 
 		_this.state = {
@@ -28518,6 +28514,9 @@ var SideBar = function (_Component) {
 	_createClass(SideBar, [{
 		key: 'render',
 		value: function render() {
+
+			var jobName = this.state.jobs;
+			console.log('job', jobName);
 			return _react2.default.createElement(
 				'div',
 				{ style: style },
@@ -28527,26 +28526,21 @@ var SideBar = function (_Component) {
 					plumbers: this.props.plumbers,
 					func: this.func
 				}),
-				this.state.jobs === 'plumbers' ? _react2.default.createElement(
+				_react2.default.createElement(
 					'div',
-					null,
-					this.props.plumbers.map(function (one) {
+					{ style: style },
+					_react2.default.createElement(
+						'h1',
+						null,
+						this.state.jobs
+					),
+					jobName ? this.props[jobName].map(function (one) {
 						return _react2.default.createElement(
 							'div',
 							null,
 							one.name
 						);
-					})
-				) : _react2.default.createElement(
-					'div',
-					null,
-					this.props.electricians.map(function (one) {
-						return _react2.default.createElement(
-							'div',
-							null,
-							one.name
-						);
-					})
+					}) : null
 				)
 			);
 		}
@@ -28554,6 +28548,27 @@ var SideBar = function (_Component) {
 
 	return SideBar;
 }(_react.Component);
+
+// {this.state.jobs === 'plumbers' ? 
+// 		<div style={style}>
+// 			<h1>{this.state.jobs}</h1>
+// 			{this.props[jobName].map(one => {
+// 				return(
+// 				<div style3>
+// 					{one.name}
+// 				</div>)
+// 			})}
+// 		</div>
+// 		: <div style={style}>
+// 			<h1>{this.state.jobs}</h1>
+// 			{this.props.electricians.map(one => {
+// 				return(
+// 				<div style3>
+// 					{one.name}
+// 				</div>)
+// 			})}
+// 		</div>
+// }
 
 exports.default = SideBar;
 
@@ -28576,11 +28591,8 @@ var actions = exports.actions = {
     'ADD_ALARM': function ADD_ALARM(oldStore, options) {
         return (0, _reducers.addAlarm)(oldStore, options);
     },
-    'INACTIVATE_ALARM': function INACTIVATE_ALARM(oldStore, options) {
-        return (0, _reducers.inactivateAlarm)(oldStore, options);
-    },
-    'UPDATE_ROUTE': function UPDATE_ROUTE(oldStore, options) {
-        return (0, _reducers.updateRoute)(oldStore, options);
+    'PROVIDER_TYPE': function PROVIDER_TYPE(oldStore, options) {
+        return (0, _reducers.providerType)(oldStore, options);
     }
 };
 
@@ -28599,6 +28611,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 exports.addAlarm = addAlarm;
 exports.inactivateAlarm = inactivateAlarm;
+exports.providerType = providerType;
 exports.updateRoute = updateRoute;
 function addAlarm(oldStore, options) {
     var name = options.name,
@@ -28640,6 +28653,20 @@ function inactivateAlarm(oldStore, options) {
         return Object.assign({}, oldStore, {
             active_alarms: newA,
             inactive_alarms: newIn
+        });
+    });
+}
+
+function providerType(oldStore, options) {
+    var type = options.type;
+
+    return Promise.resolve().then(function (_) {
+        console.log('here');
+        console.log(Object.assign({}, oldStore, {
+            type: type
+        }));
+        return Object.assign({}, oldStore, {
+            type: type
         });
     });
 }
@@ -28689,6 +28716,18 @@ var data = {
 				lng: -74.0064832
 			},
 			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0
+		}, {
+			name: "Fizal Man",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7092105,
+				lng: -74.0074832
+			},
+			hereUntil: 3600,
+			type: "E",
 			id: 1,
 			rating: 0
 		}, {
@@ -28699,6 +28738,7 @@ var data = {
 				lng: -74.0084832
 			},
 			hereUntil: 3600,
+			type: "E",
 			id: 1,
 			rating: 0
 		}],
@@ -28710,17 +28750,19 @@ var data = {
 				lng: -74.0074832
 			},
 			hereUntil: 3600,
+			type: "P",
 			id: 1,
 			rating: 0
 		}, {
 			name: "Kirsi Ceballos",
 			licenseNumber: "XXXXXXXXX",
 			location: {
-				lat: 40.7179105,
-				lng: -74.0164832
+				lat: 40.7092105,
+				lng: -74.0074832
 			},
 			hereUntil: 3600,
 			id: 1,
+			type: "P",
 			rating: 0
 		}]
 
@@ -28817,11 +28859,12 @@ var Router = function (_Component) {
                     args[_key2 - 1] = arguments[_key2];
                 }
 
+                // console.log(this.props, 'props')
                 var currentPage = cloneElement(child, {
                     routeParams: args
                 });
 
-                _this2.setState({ currentPage: currentPage });
+                _this2.setState({ currentPage: _this2.props.currentRoute });
             };
 
             var routes = Children.map(children, function (child) {
@@ -28852,7 +28895,13 @@ var Router = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            return this.state.currentPage || null;
+            var _this3 = this;
+
+            var children = _react2.default.Children.toArray(this.props.children).filter(function (child) {
+                return child.props.url === (_this3.state.currentRoute || _this3.props.currentRoute);
+            });
+
+            return children[0] || null;
         }
     }]);
 
@@ -28904,7 +28953,7 @@ var Link = exports.Link = function (_Component3) {
     }, {
         key: 'render',
         value: function render() {
-            var _this5 = this;
+            var _this6 = this;
 
             var _props = this.props,
                 currentRoute = _props.currentRoute,
@@ -28918,7 +28967,7 @@ var Link = exports.Link = function (_Component3) {
                 'a',
                 { className: classes.join(' '),
                     onClick: function onClick(e) {
-                        return _this5.click(e, route);
+                        return _this6.click(e, route);
                     },
                     href: '#' + route },
                 this.props.children

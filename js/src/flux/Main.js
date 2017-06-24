@@ -16,6 +16,7 @@ export default class Main extends Component {
 	dispatch(actionName, options) {
 		const actionToDo = actions[actionName];
 		actionToDo(this.state, options).then((newStore) => {
+			console.log('newstore is...', newStore)
 			this.setState(newStore);
 		});	
 	}

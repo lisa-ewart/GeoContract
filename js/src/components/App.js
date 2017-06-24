@@ -6,11 +6,9 @@ import SideBar from './SideBar';
 export default class App extends Component {
 
     render() {
-        console.log('APP PROPS', this.props)
         const {currentRoute} = this.props;
         // console.log(currentRoute)
         return (<div>
-            <Link route="/create" {...this.props}>New Alarm</Link>
 
             <br />
             <br />
@@ -20,6 +18,7 @@ export default class App extends Component {
                     <div style={{display: 'flex'}}>
                         <Gmaps center={this.props.data.consumer.location} {...this.props} />
                         <SideBar
+                            dispatch={this.props.dispatch}
                             electricians={this.props.data.serviceProviders.electricians}
                             plumbers={this.props.data.serviceProviders.plumbers}
                         />

@@ -33,7 +33,7 @@ const styles = {
 	container: {
 		width: '70vw',
 		height: '500px',
-		// display: 'inline-block'
+		display: 'inline-block'
 	}
 }
 
@@ -51,33 +51,24 @@ export default class Gmaps extends Component {
   };
 
   render() {
-  	console.log(this.props)
-
+  	console.log('GMAPS',this.props.type)
+  	const providers = this.props.data.serviceProviders[this.props.type] || [];
+  	console.log('here')
     return (
     	<div style={styles.container}>
 	      <GoogleMapReact defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
 
-	      	{this.props.data.serviceProviders.electricians.map((electrician, index) => {
+	      	{providers.map((provider, index) => {
 		  		return <ProviderFlag 
 		  			key={index}
-			  		lat={electrician.location.lat}
-			      	lng={electrician.location.lng}
-			     	text={'E'}
+			  		lat={provider.location.lat}
+			      	lng={provider.location.lng}
+			     	text={provider.type}
 			     	color={"blue"}
 			     	border={"5px solid #ccc"}
 			    />
 		  	})}
 
-		  	{this.props.data.serviceProviders.plumbers.map((plumbers, index) => {
-		  		return <ProviderFlag 
-		  			key={index}
-			  		lat={plumbers.location.lat}
-			      	lng={plumbers.location.lng}
-			     	text={'P'}
-			     	color={"red"}
-			     	border={"5px solid #fff"}
-			    />
-		  	})}
 		
 	        <ConsumrFlag
 	          lat={this.props.data.consumer.location.lat}

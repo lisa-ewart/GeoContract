@@ -2,8 +2,14 @@ import React, {Component} from 'react'
 import Dropdown from './Dropdown';
 
 const style = {
-	// display: 'inline-block',
+		padding: '50px',
+}
 
+const style2 = {
+	marginTop: '25px',
+}
+const style3 = {
+	margin: '5px',
 }
 
 class SideBar extends Component {
@@ -19,10 +25,16 @@ class SideBar extends Component {
         this.setState({
             jobs: opts.value
         })
-        console.log(this.state.jobs)
+        console.log(this.state.jobs, 'tes', opts.value)
+        this.props.dispatch('PROVIDER_TYPE',{
+        	type: opts.value
+        })
     }
 
 	render() {
+
+		const jobName = this.state.jobs;
+		console.log('job',jobName)
 		return(
 			<div style={style}>
 				<Dropdown 
@@ -31,28 +43,47 @@ class SideBar extends Component {
 					plumbers={this.props.plumbers}
 					func={this.func}
 				/>
-				{this.state.jobs === 'plumbers' ? 
-					<div>
-						{this.props.plumbers.map(one => {
+				
+					<div style={style}>
+						<h1>{this.state.jobs}</h1>
+						{jobName ? this.props[jobName].map(one => {
 							return(
 							<div>
 								{one.name}
 							</div>)
-						})}
+						}) : null}
 					</div>
-					: <div>
-						{this.props.electricians.map(one => {
-							return(
-							<div>
-								{one.name}
-							</div>)
-						})}
-					</div>
-			}
 
 			</div>
 		)
 	}
 }
+
+
+
+
+
+
+
+			// {this.state.jobs === 'plumbers' ? 
+			// 		<div style={style}>
+			// 			<h1>{this.state.jobs}</h1>
+			// 			{this.props[jobName].map(one => {
+			// 				return(
+			// 				<div style3>
+			// 					{one.name}
+			// 				</div>)
+			// 			})}
+			// 		</div>
+			// 		: <div style={style}>
+			// 			<h1>{this.state.jobs}</h1>
+			// 			{this.props.electricians.map(one => {
+			// 				return(
+			// 				<div style3>
+			// 					{one.name}
+			// 				</div>)
+			// 			})}
+			// 		</div>
+			// }
 
 export default SideBar

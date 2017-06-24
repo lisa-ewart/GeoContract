@@ -16,9 +16,23 @@ const data = {
 				lng: -74.0064832,
 			},
 			hereUntil: 3600,
+			type: "E",
 			id: 1,
 			rating: 0,
-		}, {
+		}, 
+		{
+			name: "Fizal Man",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7092105, 
+				lng: -74.0074832,
+			},
+			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0,
+		},
+		{
 			name: "Jose Marin",
 			licenseNumber: "XXXXXXXXX",
 			location: {
@@ -26,6 +40,7 @@ const data = {
 				lng: -74.0084832,
 			},
 			hereUntil: 3600,
+			type: "E",
 			id: 1,
 			rating: 0,
 		}],
@@ -37,17 +52,19 @@ const data = {
 				lng: -74.0074832,
 			},
 			hereUntil: 3600,
+			type: "P",
 			id: 1,
 			rating: 0,
 		}, {
 			name: "Kirsi Ceballos",
 			licenseNumber: "XXXXXXXXX",
 			location: {
-				lat: 40.7179105, 
-				lng: -74.0164832,
+				lat: 40.7092105, 
+				lng: -74.0074832,
 			},
 			hereUntil: 3600,
 			id: 1,
+			type: "P",
 			rating: 0,
 		}]
 		
