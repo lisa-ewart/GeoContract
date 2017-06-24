@@ -50,6 +50,7 @@ const data = {
 			id: 1,
 			rating: 0,
 		}]
+		
 	}
 }
 

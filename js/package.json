@@ -16,7 +16,9 @@
     "google-map-react": "^0.24.0",
     "react": "^15.4.2",
     "react-data-grid": "^2.0.18",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-select": "^1.0.0-rc.5",
+    "semantic-ui-react": "^0.70.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",

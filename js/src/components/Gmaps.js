@@ -29,6 +29,14 @@ const greatPlaceStyleHover = {
   color: '#f44336'
 };
 
+const styles = {
+	container: {
+		width: '70vw',
+		height: '500px',
+		// display: 'inline-block'
+	}
+}
+
 // export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};
 
 const ConsumrFlag = () => <div style={greatPlaceStyle}>C</div>;
@@ -46,35 +54,38 @@ export default class Gmaps extends Component {
   	console.log(this.props)
 
     return (
-      <GoogleMapReact defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
+    	<div style={styles.container}>
+	      <GoogleMapReact defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
 
-      	{this.props.data.serviceProviders.electricians.map((electrician, index) => {
-	  		return <ProviderFlag 
-	  			key={index}
-		  		lat={electrician.location.lat}
-		      	lng={electrician.location.lng}
-		     	text={'E'}
-		     	color={"blue"}
-		     	border={"5px solid #ccc"}
-		    />
-	  	})}
+	      	{this.props.data.serviceProviders.electricians.map((electrician, index) => {
+		  		return <ProviderFlag 
+		  			key={index}
+			  		lat={electrician.location.lat}
+			      	lng={electrician.location.lng}
+			     	text={'E'}
+			     	color={"blue"}
+			     	border={"5px solid #ccc"}
+			    />
+		  	})}
 
-	  	{this.props.data.serviceProviders.plumbers.map((plumbers, index) => {
-	  		return <ProviderFlag 
-	  			key={index}
-		  		lat={plumbers.location.lat}
-		      	lng={plumbers.location.lng}
-		     	text={'P'}
-		     	color={"red"}
-		     	border={"5px solid #666"}
-		    />
-	  	})}
-        <ConsumrFlag
-          lat={this.props.data.consumer.location.lat}
-          lng={this.props.data.consumer.location.lng}
-          text={'C'}
-        />
-      </GoogleMapReact>
+		  	{this.props.data.serviceProviders.plumbers.map((plumbers, index) => {
+		  		return <ProviderFlag 
+		  			key={index}
+			  		lat={plumbers.location.lat}
+			      	lng={plumbers.location.lng}
+			     	text={'P'}
+			     	color={"red"}
+			     	border={"5px solid #fff"}
+			    />
+		  	})}
+		
+	        <ConsumrFlag
+	          lat={this.props.data.consumer.location.lat}
+	          lng={this.props.data.consumer.location.lng}
+	          text={'C'}
+	        />
+	      </GoogleMapReact>
+      </div>
     );
   }
 }
