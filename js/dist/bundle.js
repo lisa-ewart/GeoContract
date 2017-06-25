@@ -28224,7 +28224,7 @@ var App = function (_Component) {
                         _react2.default.createElement(
                             'div',
                             { style: { display: 'flex' } },
-                            _react2.default.createElement(_Gmaps2.default, _extends({ center: this.props.data.consumer.location }, this.props)),
+                            _react2.default.createElement(_Gmaps2.default, _extends({ apiKey: "AIzaSyATYry8EYxN0doyvmyEDPcfKnz2X6s7hjE", center: this.props.data.consumer.location }, this.props)),
                             _react2.default.createElement(_SideBar2.default, {
                                 dispatch: this.props.dispatch,
                                 electricians: this.props.data.serviceProviders.electricians,
