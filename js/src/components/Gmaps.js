@@ -13,7 +13,7 @@ const greatPlaceStyle = {
   left: -K_SIZE / 2,
   top: -K_SIZE / 2,
 
-  border: '2px solid #fff',
+  border: '2px solid #A7D0FF',
   borderRadius: K_SIZE,
   backgroundColor: 'white',
   textAlign: 'center',
@@ -47,6 +47,10 @@ const ConsumrFlag = () => <div style={greatPlaceStyle}>C</div>;
 // 	{text}
 // </div>;
 
+
+
+
+
 class ProviderFlag extends Component {
 	state = {
 		infoWindowShowing: false,
@@ -68,11 +72,16 @@ class ProviderFlag extends Component {
 			return null;
 		}
 		const {provider} = this.props
-		return <div style={{position: 'absolute', minWidth: '200px', minHeight: '150px', border:'2px solid grey', backgroundColor: 'white', zIndex: '5'}}>
+
+		//console.log(provider.hereUntil)
+		return <div style={{position: 'absolute', minWidth: '200px', minHeight: '250px', border:'2px solid grey', backgroundColor: 'white', zIndex: '5'}}>
 			<button>x</button><br/>
 			<p>License#: </p>
 			<p style={{color: 'green'}}>{provider.licenseNumber}</p>
-			{provider.name}<br/> 
+			{provider.name}<br/>
+			{provider.hereUntil} 
+			<button>Send me a request</button>
+			
 			
 		</div>
 	}
@@ -117,3 +126,7 @@ export default class Gmaps extends Component {
     );
   }
 }
+
+
+
+

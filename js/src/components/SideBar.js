@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Dropdown from './Dropdown';
+import Popup from 'react-popup';
+
 
 const style = {
 		padding: '50px',
@@ -14,6 +16,7 @@ const style2 = {
 const style3 = {
 	margin: '5px',
 }
+
 
 class SideBar extends Component {
 
@@ -48,11 +51,8 @@ class SideBar extends Component {
 		console.log('job',jobName)
 
 
-		
-  function handleClick(e) {
-    e.preventDefault();
-    console.log('The link was clicked.');
-  }
+
+  
 		return(
 			<div style={style}>
 				<Dropdown 
@@ -71,7 +71,7 @@ class SideBar extends Component {
 								<p className = "frame">{one.id}</p>
 								{one.name}<br/>
 								{one.licenseNumber}<br/>
-								<button onClick={handleClick}>Send Service Request</button>
+								<button>Send {one.name} a message</button>
 								</div>
 							</div>)
 						}) : null}
