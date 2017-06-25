@@ -10,7 +10,7 @@ const data = {
 	serviceProviders: {
 		electricians: [{
 			name: "John Smith",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7099105, 
 				lng: -74.0064832,
@@ -22,67 +22,43 @@ const data = {
 		}, 
 		{
 			name: "Pete Sand",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7091105, 
 				lng: -74.0065832,
 			},
 			hereUntil: 3600,
 			type: "E",
-			id: 1,
+			id: 2,
 			rating: 0,
 		},
 		{
 			name: "Karen Jo",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7092105, 
 				lng: -74.0064832,
 			},
 			hereUntil: 3600,
 			type: "E",
-			id: 1,
-			rating: 0,
-		}, 
-		{
-			name: "John Smith",
-			licenseNumber: "XXXXXXXXX",
-			location: {
-				lat: 40.7099105, 
-				lng: -74.0064832,
-			},
-			hereUntil: 3600,
-			type: "E",
-			id: 1,
+			id: 3,
 			rating: 0,
 		},  
 		{
 			name: "Fizal Man",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7092105, 
 				lng: -74.0074832,
 			},
 			hereUntil: 3600,
 			type: "E",
-			id: 1,
-			rating: 0,
-		},
-		{
-			name: "Jose Marin",
-			licenseNumber: "XXXXXXXXX",
-			location: {
-				lat: 40.7079205, 
-				lng: -74.0084832,
-			},
-			hereUntil: 3600,
-			type: "E",
-			id: 1,
+			id: 4,
 			rating: 0,
 		}],
 		plumbers: [{
 			name: "George Glass",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7089105, 
 				lng: -74.0074832,
@@ -93,35 +69,35 @@ const data = {
 			rating: 0,
 		}, {
 			name: "Michael Bene",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7088905, 
 				lng: -74.0070832,
 			},
 			hereUntil: 3600,
 			type: "P",
-			id: 1,
+			id: 2,
 			rating: 0,
 		},{
 			name: "Richard Hill",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7090105, 
 				lng: -74.0074832,
 			},
 			hereUntil: 3600,
 			type: "P",
-			id: 1,
+			id: 3,
 			rating: 0,
 		},{
 			name: "Kirsi Ceballos",
-			licenseNumber: "XXXXXXXXX",
+			licenseNumber: "NY143578",
 			location: {
 				lat: 40.7092105, 
 				lng: -74.0074832,
 			},
 			hereUntil: 3600,
-			id: 1,
+			id: 4,
 			type: "P",
 			rating: 0,
 		}]

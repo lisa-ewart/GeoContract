@@ -3,6 +3,9 @@ import Dropdown from './Dropdown';
 
 const style = {
 		padding: '50px',
+		backgroundColor: '#E6E6E3',
+		height: '700px',
+		overflow: 'scroll',
 }
 
 const style2 = {
@@ -13,6 +16,7 @@ const style3 = {
 }
 
 class SideBar extends Component {
+
 
     constructor(props) {
         super(props)
@@ -31,6 +35,9 @@ class SideBar extends Component {
         })
     }
 
+     
+
+
 	render() {
 
 		const jobName = this.state.jobs;
@@ -40,15 +47,21 @@ class SideBar extends Component {
 				<Dropdown 
 					electricians={this.props.electricians} 
 					plumbers={this.props.plumbers}
+					//movers={this.props.movers}
 					func={this.func}
 				/>
 				
 					<div style={style}>
-						<h1>{this.state.jobs}</h1>
+						<h1 className = "font">Available {this.state.jobs}</h1>
 						{jobName ? this.props[jobName].map(one => {
 							return(
 							<div>
-								{one.name}
+								<div className = "profilesidediv">
+								<p className = "frame">{one.id}</p>
+								{one.name}<br/>
+								{one.licenseNumber}<br/>
+								<button>Send Service Request</button>
+								</div>
 							</div>)
 						}) : null}
 					</div>
@@ -64,25 +77,6 @@ class SideBar extends Component {
 
 
 
-			// {this.state.jobs === 'plumbers' ? 
-			// 		<div style={style}>
-			// 			<h1>{this.state.jobs}</h1>
-			// 			{this.props[jobName].map(one => {
-			// 				return(
-			// 				<div style3>
-			// 					{one.name}
-			// 				</div>)
-			// 			})}
-			// 		</div>
-			// 		: <div style={style}>
-			// 			<h1>{this.state.jobs}</h1>
-			// 			{this.props.electricians.map(one => {
-			// 				return(
-			// 				<div style3>
-			// 					{one.name}
-			// 				</div>)
-			// 			})}
-			// 		</div>
-			// }
+			
 
 export default SideBar

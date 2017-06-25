@@ -3,6 +3,7 @@ import GoogleMapReact, {InfoWindow} from 'google-map-react';
 
 const K_SIZE = 30;
 
+
 const greatPlaceStyle = {
   // initially any map object has left top corner at lat lng coordinates
   // it's on you to set object origin to 0,0 coordinates
@@ -32,10 +33,11 @@ const greatPlaceStyleHover = {
 const styles = {
 	container: {
 		width: '70vw',
-		height: '500px',
+		height: '700px',
 		display: 'inline-block'
 	}
 }
+
 
 // export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};
 //onClick={console.log("hi")}
@@ -66,8 +68,12 @@ class ProviderFlag extends Component {
 			return null;
 		}
 		const {provider} = this.props
-		return <div style={{position: 'absolute', minWidth: '200px', minHeight: '150px', backgroundColor: 'white', zIndex: '5'}}>
-			{provider.name} {provider.licenseNumber}
+		return <div style={{position: 'absolute', minWidth: '200px', minHeight: '150px', border:'2px solid grey', backgroundColor: 'white', zIndex: '5'}}>
+			<button>x</button><br/>
+			<p>License#: </p>
+			<p style={{color: 'green'}}>{provider.licenseNumber}</p>
+			{provider.name}<br/> 
+			
 		</div>
 	}
 }
@@ -93,7 +99,7 @@ export default class Gmaps extends Component {
 		  			key={index}
 			  		lat={provider.location.lat}
 			      	lng={provider.location.lng}
-			     	text={provider.type}
+			     	text={provider.id}
 			     	color={"grey"}
 			     	border={"2px solid green"}
 			     	provider={provider}

@@ -3,10 +3,27 @@
     justify-content: center;
     align-items: center;
 }
-
+.font{
+    color:grey;
+    font-family:helvetica neue;
+    font-weight:lighter;
+}
+.frame{
+    border: 1px solid white;
+    width:auto;
+}
 .header__link {
     color: #292929;
     font-size: 12px;
+}
+.profilesidediv{
+    padding:10px;
+    background-color:#A7D0FF;
+    margin:5px;
+}
+.scrolldiv{
+    height:500px;
+    overflow: scroll;
 }
 
 #app .react-grid-HeaderCell {
