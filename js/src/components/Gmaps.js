@@ -13,7 +13,7 @@ const greatPlaceStyle = {
   left: -K_SIZE / 2,
   top: -K_SIZE / 2,
 
-  border: '2px solid #f44336',
+  border: '2px solid #fff',
   borderRadius: K_SIZE,
   backgroundColor: 'white',
   textAlign: 'center',

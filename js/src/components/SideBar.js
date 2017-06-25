@@ -35,13 +35,24 @@ class SideBar extends Component {
         })
     }
 
-     
+    
+
+  
+  
+
 
 
 	render() {
 
 		const jobName = this.state.jobs;
 		console.log('job',jobName)
+
+
+		
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
 		return(
 			<div style={style}>
 				<Dropdown 
@@ -60,7 +71,7 @@ class SideBar extends Component {
 								<p className = "frame">{one.id}</p>
 								{one.name}<br/>
 								{one.licenseNumber}<br/>
-								<button>Send Service Request</button>
+								<button onClick={handleClick}>Send Service Request</button>
 								</div>
 							</div>)
 						}) : null}
