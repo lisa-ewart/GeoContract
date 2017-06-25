@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router, { Route, Link } from '../router/Router';
 import Gmaps from './Gmaps';
 import SideBar from './SideBar';
+import Auth from './Auth';
 
 export default class App extends Component {
 
@@ -11,8 +12,9 @@ export default class App extends Component {
         return (<div>
 
             <br />
-            <br />
-
+    
+            <Auth />
+    
             <Router currentRoute={currentRoute} dispatch={this.props.dispatch}>
                 <Route url="/map">
                     <div style={{display: 'flex'}}>

@@ -92,7 +92,8 @@ class ProviderFlag extends Component {
 export default class Gmaps extends Component {
   static defaultProps = {
     center: {lat: 59.95, lng: 30.33},
-    zoom: 15
+    zoom: 16,
+    scrollwheel: false,
   };
 
   render() {
