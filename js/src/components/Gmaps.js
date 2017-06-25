@@ -86,7 +86,7 @@ export default class Gmaps extends Component {
   	console.log('here')
     return (
     	<div style={styles.container}>
-	      <GoogleMapReact defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
+	      <GoogleMapReact apiKey={"AIzaSyATYry8EYxN0doyvmyEDPcfKnz2X6s7hjE"}  defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
 
 	      	{providers.map((provider, index) => {
 		  		return <ProviderFlag 

@@ -16,7 +16,7 @@ export default class App extends Component {
             <Router currentRoute={currentRoute} dispatch={this.props.dispatch}>
                 <Route url="/map">
                     <div style={{display: 'flex'}}>
-                        <Gmaps apiKey={"AIzaSyATYry8EYxN0doyvmyEDPcfKnz2X6s7hjE"} center={this.props.data.consumer.location} {...this.props} />
+                        <Gmaps center={this.props.data.consumer.location} {...this.props} />
                         <SideBar
                             dispatch={this.props.dispatch}
                             electricians={this.props.data.serviceProviders.electricians}
