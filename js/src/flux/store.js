@@ -21,6 +21,42 @@ const data = {
 			rating: 0,
 		}, 
 		{
+			name: "Pete Sand",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7091105, 
+				lng: -74.0065832,
+			},
+			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0,
+		},
+		{
+			name: "Karen Jo",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7092105, 
+				lng: -74.0064832,
+			},
+			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0,
+		}, 
+		{
+			name: "John Smith",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7099105, 
+				lng: -74.0064832,
+			},
+			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0,
+		},  
+		{
 			name: "Fizal Man",
 			licenseNumber: "XXXXXXXXX",
 			location: {
@@ -45,7 +81,7 @@ const data = {
 			rating: 0,
 		}],
 		plumbers: [{
-			name: "Richard Hill",
+			name: "George Glass",
 			licenseNumber: "XXXXXXXXX",
 			location: {
 				lat: 40.7089105, 
@@ -56,6 +92,28 @@ const data = {
 			id: 1,
 			rating: 0,
 		}, {
+			name: "Michael Bene",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7088905, 
+				lng: -74.0070832,
+			},
+			hereUntil: 3600,
+			type: "P",
+			id: 1,
+			rating: 0,
+		},{
+			name: "Richard Hill",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7090105, 
+				lng: -74.0074832,
+			},
+			hereUntil: 3600,
+			type: "P",
+			id: 1,
+			rating: 0,
+		},{
 			name: "Kirsi Ceballos",
 			licenseNumber: "XXXXXXXXX",
 			location: {

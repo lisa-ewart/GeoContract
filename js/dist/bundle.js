@@ -28272,13 +28272,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import { friendOptions } from '../common'
 var friendOptions = [{
-		text: 'Electric Don',
+		text: 'Electricians',
 		value: 'electricians',
-		image: { avatar: true, src: 'http://az616578.vo.msecnd.net/files/2016/06/13/6360139435793044861461393096_Donald-Trump-prune-face.jpg' }
+		image: { avatar: true, src: 'http://www.freepngimg.com/download/light_bulb/10-2-light-bulb-png-file.png' }
 }, {
 		text: 'Plumbers',
 		value: "plumbers",
-		image: { avatar: true, src: 'http://az616578.vo.msecnd.net/files/2016/06/13/6360139435793044861461393096_Donald-Trump-prune-face.jpg' }
+		image: { avatar: true, src: 'http://toolsandmore.us/images/products/detail/87622.jpeg' }
 }];
 
 var DropdownExampleSelection = function DropdownExampleSelection(props) {
@@ -28320,7 +28320,7 @@ exports.default = DropdownExampleSelection;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -28343,107 +28343,168 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var K_SIZE = 40;
+var K_SIZE = 30;
 
 var greatPlaceStyle = {
-  // initially any map object has left top corner at lat lng coordinates
-  // it's on you to set object origin to 0,0 coordinates
-  position: 'absolute',
-  width: K_SIZE,
-  height: K_SIZE,
-  left: -K_SIZE / 2,
-  top: -K_SIZE / 2,
+	// initially any map object has left top corner at lat lng coordinates
+	// it's on you to set object origin to 0,0 coordinates
+	position: 'absolute',
+	width: K_SIZE,
+	height: K_SIZE,
+	left: -K_SIZE / 2,
+	top: -K_SIZE / 2,
 
-  border: '5px solid #f44336',
-  borderRadius: K_SIZE,
-  backgroundColor: 'white',
-  textAlign: 'center',
-  color: '#3f51b5',
-  fontSize: 16,
-  fontWeight: 'bold',
-  padding: 4,
-  cursor: 'pointer'
+	border: '2px solid #f44336',
+	borderRadius: K_SIZE,
+	backgroundColor: 'white',
+	textAlign: 'center',
+	color: '#3f51b5',
+	fontSize: 16,
+	fontWeight: 'bold',
+	padding: 4,
+	cursor: 'pointer'
 };
 
 var greatPlaceStyleHover = _extends({}, greatPlaceStyle, {
-  border: '5px solid #3f51b5',
-  color: '#f44336'
+	border: '5px solid #3f51b5',
+	color: '#f44336'
 });
 
 var styles = {
-  container: {
-    width: '70vw',
-    height: '500px',
-    display: 'inline-block'
-  }
+	container: {
+		width: '70vw',
+		height: '500px',
+		display: 'inline-block'
+	}
 
-  // export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};
+	// export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};
+	//onClick={console.log("hi")}
 
 };var ConsumrFlag = function ConsumrFlag() {
-  return _react2.default.createElement(
-    'div',
-    { style: greatPlaceStyle },
-    'C'
-  );
+	return _react2.default.createElement(
+		'div',
+		{ style: greatPlaceStyle },
+		'C'
+	);
 };
-var ProviderFlag = function ProviderFlag(_ref) {
-  var text = _ref.text,
-      color = _ref.color,
-      border = _ref.border;
-  return _react2.default.createElement(
-    'div',
-    { style: _extends({}, greatPlaceStyle, { color: color, border: border }) },
-    text
-  );
-};
+// const ProviderFlag = ({text, color, border}) => <div onClick={()=>"hi"} style={{...greatPlaceStyle, color, border}}>
+// 	{text}
+// </div>;
 
-var Gmaps = function (_Component) {
-  _inherits(Gmaps, _Component);
+var ProviderFlag = function (_Component) {
+	_inherits(ProviderFlag, _Component);
 
-  function Gmaps() {
-    _classCallCheck(this, Gmaps);
+	function ProviderFlag() {
+		var _ref;
 
-    return _possibleConstructorReturn(this, (Gmaps.__proto__ || Object.getPrototypeOf(Gmaps)).apply(this, arguments));
-  }
+		var _temp, _this, _ret;
 
-  _createClass(Gmaps, [{
-    key: 'render',
-    value: function render() {
-      console.log('GMAPS', this.props.type);
-      var providers = this.props.data.serviceProviders[this.props.type] || [];
-      console.log('here');
-      return _react2.default.createElement(
-        'div',
-        { style: styles.container },
-        _react2.default.createElement(
-          _googleMapReact2.default,
-          { defaultCenter: this.props.center, defaultZoom: this.props.zoom },
-          providers.map(function (provider, index) {
-            return _react2.default.createElement(ProviderFlag, {
-              key: index,
-              lat: provider.location.lat,
-              lng: provider.location.lng,
-              text: provider.type,
-              color: "blue",
-              border: "5px solid #ccc"
-            });
-          }),
-          _react2.default.createElement(ConsumrFlag, {
-            lat: this.props.data.consumer.location.lat,
-            lng: this.props.data.consumer.location.lng,
-            text: 'C'
-          })
-        )
-      );
-    }
-  }]);
+		_classCallCheck(this, ProviderFlag);
 
-  return Gmaps;
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProviderFlag.__proto__ || Object.getPrototypeOf(ProviderFlag)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+			infoWindowShowing: false
+		}, _temp), _possibleConstructorReturn(_this, _ret);
+	}
+
+	_createClass(ProviderFlag, [{
+		key: 'toggleWindow',
+		value: function toggleWindow() {
+			this.setState({
+				infoWindowShowing: !this.state.infoWindowShowing
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var _props = this.props,
+			    text = _props.text,
+			    color = _props.color,
+			    border = _props.border;
+
+			return _react2.default.createElement(
+				'div',
+				{ onClick: function onClick() {
+						return _this2.toggleWindow();
+					}, style: _extends({}, greatPlaceStyle, { color: color, border: border, position: 'relative' }) },
+				text,
+				this.renderInfo()
+			);
+		}
+	}, {
+		key: 'renderInfo',
+		value: function renderInfo() {
+			if (!this.state.infoWindowShowing) {
+				return null;
+			}
+			var provider = this.props.provider;
+
+			return _react2.default.createElement(
+				'div',
+				{ style: { position: 'absolute', minWidth: '200px', minHeight: '150px', backgroundColor: 'white', zIndex: '5' } },
+				provider.name,
+				' ',
+				provider.licenseNumber
+			);
+		}
+	}]);
+
+	return ProviderFlag;
+}(_react.Component);
+
+var Gmaps = function (_Component2) {
+	_inherits(Gmaps, _Component2);
+
+	function Gmaps() {
+		_classCallCheck(this, Gmaps);
+
+		return _possibleConstructorReturn(this, (Gmaps.__proto__ || Object.getPrototypeOf(Gmaps)).apply(this, arguments));
+	}
+
+	_createClass(Gmaps, [{
+		key: 'render',
+		value: function render() {
+			console.log('GMAPS', this.props.type);
+			var providers = this.props.data.serviceProviders[this.props.type] || [];
+			console.log('here');
+			return _react2.default.createElement(
+				'div',
+				{ style: styles.container },
+				_react2.default.createElement(
+					_googleMapReact2.default,
+					{ defaultCenter: this.props.center, defaultZoom: this.props.zoom },
+					providers.map(function (provider, index) {
+						return _react2.default.createElement(ProviderFlag, {
+							key: index,
+							lat: provider.location.lat,
+							lng: provider.location.lng,
+							text: provider.type,
+							color: "grey",
+							border: "2px solid green",
+							provider: provider
+						});
+					}),
+					_react2.default.createElement(ConsumrFlag, {
+						lat: this.props.data.consumer.location.lat,
+						lng: this.props.data.consumer.location.lng,
+						text: 'C'
+					})
+				)
+			);
+		}
+	}]);
+
+	return Gmaps;
 }(_react.Component);
 
 Gmaps.defaultProps = {
-  center: { lat: 59.95, lng: 30.33 },
-  zoom: 15
+	center: { lat: 59.95, lng: 30.33 },
+	zoom: 15
 };
 exports.default = Gmaps;
 
@@ -28521,7 +28582,6 @@ var SideBar = function (_Component) {
 				'div',
 				{ style: style },
 				_react2.default.createElement(_Dropdown2.default, {
-
 					electricians: this.props.electricians,
 					plumbers: this.props.plumbers,
 					func: this.func
@@ -28720,6 +28780,39 @@ var data = {
 			id: 1,
 			rating: 0
 		}, {
+			name: "Pete Sand",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7091105,
+				lng: -74.0065832
+			},
+			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0
+		}, {
+			name: "Karen Jo",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7092105,
+				lng: -74.0064832
+			},
+			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0
+		}, {
+			name: "John Smith",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7099105,
+				lng: -74.0064832
+			},
+			hereUntil: 3600,
+			type: "E",
+			id: 1,
+			rating: 0
+		}, {
 			name: "Fizal Man",
 			licenseNumber: "XXXXXXXXX",
 			location: {
@@ -28743,10 +28836,32 @@ var data = {
 			rating: 0
 		}],
 		plumbers: [{
-			name: "Richard Hill",
+			name: "George Glass",
 			licenseNumber: "XXXXXXXXX",
 			location: {
 				lat: 40.7089105,
+				lng: -74.0074832
+			},
+			hereUntil: 3600,
+			type: "P",
+			id: 1,
+			rating: 0
+		}, {
+			name: "Michael Bene",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7088905,
+				lng: -74.0070832
+			},
+			hereUntil: 3600,
+			type: "P",
+			id: 1,
+			rating: 0
+		}, {
+			name: "Richard Hill",
+			licenseNumber: "XXXXXXXXX",
+			location: {
+				lat: 40.7090105,
 				lng: -74.0074832
 			},
 			hereUntil: 3600,

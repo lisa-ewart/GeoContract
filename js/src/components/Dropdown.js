@@ -4,14 +4,14 @@ import { Dropdown } from 'semantic-ui-react'
 // import { friendOptions } from '../common'
 let friendOptions = [
   {
-    text: 'Electric Don',
+    text: 'Electricians',
     value: 'electricians',
-    image: { avatar: true, src: 'http://az616578.vo.msecnd.net/files/2016/06/13/6360139435793044861461393096_Donald-Trump-prune-face.jpg' }
+    image: { avatar: true, src: 'http://www.freepngimg.com/download/light_bulb/10-2-light-bulb-png-file.png' }
   },
   {
   	text: 'Plumbers',
   	value: "plumbers",
-    image: { avatar: true, src: 'http://az616578.vo.msecnd.net/files/2016/06/13/6360139435793044861461393096_Donald-Trump-prune-face.jpg' }
+    image: { avatar: true, src: 'http://toolsandmore.us/images/products/detail/87622.jpeg' }
   }
 ]
 

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact, {InfoWindow} from 'google-map-react';
 
-const K_SIZE = 40;
+const K_SIZE = 30;
 
 const greatPlaceStyle = {
   // initially any map object has left top corner at lat lng coordinates
@@ -12,7 +12,7 @@ const greatPlaceStyle = {
   left: -K_SIZE / 2,
   top: -K_SIZE / 2,
 
-  border: '5px solid #f44336',
+  border: '2px solid #f44336',
   borderRadius: K_SIZE,
   backgroundColor: 'white',
   textAlign: 'center',
@@ -38,11 +38,41 @@ const styles = {
 }
 
 // export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};
+//onClick={console.log("hi")}
 
 const ConsumrFlag = () => <div style={greatPlaceStyle}>C</div>;
-const ProviderFlag = ({text, color, border}) => <div style={{...greatPlaceStyle, color, border}}>
-	{text}
-</div>;
+// const ProviderFlag = ({text, color, border}) => <div onClick={()=>"hi"} style={{...greatPlaceStyle, color, border}}>
+// 	{text}
+// </div>;
+
+class ProviderFlag extends Component {
+	state = {
+		infoWindowShowing: false,
+	}
+	toggleWindow() {
+		this.setState({
+			infoWindowShowing: !this.state.infoWindowShowing
+		})
+	}
+	render() {
+		const {text, color, border} = this.props
+		return <div onClick={()=>this.toggleWindow()} style={{...greatPlaceStyle, color, border, position: 'relative'}}>
+			{text}
+			{this.renderInfo()}
+		</div>
+	}
+	renderInfo() {
+		if (!this.state.infoWindowShowing) {
+			return null;
+		}
+		const {provider} = this.props
+		return <div style={{position: 'absolute', minWidth: '200px', minHeight: '150px', backgroundColor: 'white', zIndex: '5'}}>
+			{provider.name} {provider.licenseNumber}
+		</div>
+	}
+}
+
+
 
 export default class Gmaps extends Component {
   static defaultProps = {
@@ -64,8 +94,9 @@ export default class Gmaps extends Component {
 			  		lat={provider.location.lat}
 			      	lng={provider.location.lng}
 			     	text={provider.type}
-			     	color={"blue"}
-			     	border={"5px solid #ccc"}
+			     	color={"grey"}
+			     	border={"2px solid green"}
+			     	provider={provider}
 			    />
 		  	})}
 

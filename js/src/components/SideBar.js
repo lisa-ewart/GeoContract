@@ -38,7 +38,6 @@ class SideBar extends Component {
 		return(
 			<div style={style}>
 				<Dropdown 
-					
 					electricians={this.props.electricians} 
 					plumbers={this.props.plumbers}
 					func={this.func}
