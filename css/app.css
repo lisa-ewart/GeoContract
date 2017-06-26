@@ -1,3 +1,5 @@
+
+
 .header {
     display: flex;
     justify-content: center;
@@ -11,6 +13,9 @@
 .signin{
     width:75px;
     color:green;
+    text-align:center;
+    margin: 0 auto !important;
+
 
 }
 .messagingBox{
@@ -39,9 +44,17 @@
     width:300px;
     height:200px;
     padding:50px;
+    text-align:center;
 }
 .signout{
-    width:75px;
+    border-style: none;
+    margin: 0 auto;
+    text-align:center;
+   margin: 0 auto;
+    text-align:center;
+    margin-left:-10px;
+    border-color: none;
+    outline:0 !important;
 }
 
 .centerGrid{
@@ -78,7 +91,7 @@
     padding:100px;
 }
 .font{
-    color:grey;
+    color:grey !important;
     font-family:helvetica neue;
     font-weight:lighter;
 }
@@ -97,7 +110,7 @@
 }
 .scrolldiv{
     height:500px;
-    overflow: scroll;
+    
 }
 
 #app .react-grid-HeaderCell {
