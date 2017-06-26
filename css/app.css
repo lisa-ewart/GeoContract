@@ -1,12 +1,116 @@
+
+
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.hidden{
+    display:none;
+}
+
+.signin{
+    width:75px;
+    color:green;
+    text-align:center;
+    margin: 0 auto !important;
+
+
+}
+.messagingBox{
+    width:25%;
+    height:600px;
+    background-color:#ccc;
+
+ }
+
+.fRight{
+    float:left;
+}
+
+.centermargin{
+    margin:0 auto;
+    margin-top:15px;
+    margin-left:45px;
+}
+
+
+
+.signInWindow{
+    background-color:#fff;
+    opacity: 0.9;
+    margin:0 auto;
+    width:300px;
+    height:200px;
+    padding:50px;
+    text-align:center;
+}
+.signout{
+    border-style: none;
+    margin: 0 auto;
+    text-align:center;
+   margin: 0 auto;
+    text-align:center;
+    margin-left:-10px;
+    border-color: none;
+    outline:0 !important;
+}
+
+.centerGrid{
+    margin:0 auto;
+    background-color:#459BA8;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    height:100px !important;
+    width:100px !important;
+    text-align:center;
+    color:white !important;
+}
+
+.font1{
+    font-family:helvetica neue;
+    color:grey !important;
+}
+.font2{
+    font-family:helvetica neue;
+    color:grey !important;
+    font-size: 1.5em;
+}
+.extraPad{
+    padding-bottom:20px;
+    text-align:center;
+}
+.bgphoto{
+    background-image: url('../assets/Chicago.jpg');
+    width:100%;
+    height:1000px;
+    background-color:#ccc;
+    margin-bottom:100px;
+    padding:100px;
+}
+.font{
+    color:grey !important;
+    font-family:helvetica neue;
+    font-weight:lighter;
+}
+.frame{
+    border: 1px solid white;
+    width:10px;
+}
 .header__link {
     color: #292929;
     font-size: 12px;
+}
+.profilesidediv{
+    padding:10px;
+    background-color:#A7D0FF;
+    margin:5px;
+}
+.scrolldiv{
+    height:500px;
+    
 }
 
 #app .react-grid-HeaderCell {
