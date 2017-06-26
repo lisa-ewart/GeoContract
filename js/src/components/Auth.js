@@ -35,7 +35,7 @@ import {signIn} from '../firebase'
 //         <div className="ui stackable menu">
 // 		    <div className="item">
 		        
-// 		        <h2>GeoLocate </h2>
+// 		        <h2>GeoContract </h2>
 // 		    </div>
 // 		    <a className="item">Features</a>
 // 		    <a className="item">Profile</a>
